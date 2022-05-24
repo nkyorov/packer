@@ -52,6 +52,15 @@ build {
     execute_command = "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
     script = "scripts/init.sh"
   }
+  
+  # Setup OS using Ansible
+  provisioner "ansible-local" {
+    playbook_dir = "../../../ansible/roles/"
+    playbook_file = "../../../ansible/roles/setup.yml"
+    clean_staging_directory = true
+    #extra_argumenrs = ["--extra-vars","\"variable_one=${var.var_one}\""]
+  }
+
   # Deprovision
   provisioner "shell" {
     execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"

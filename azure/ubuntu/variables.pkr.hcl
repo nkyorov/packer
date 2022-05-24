@@ -6,19 +6,19 @@ variable "resource_group_name" {
 
 variable "arm_client_id" {
   type      = string
-  default   = "#"
+  default   = null
   sensitive = true
 }
 
 variable "arm_client_secret" {
   type      = string
-  default   = "#"
+  default   = null
   sensitive = true
 }
 
 variable "arm_subscription_id" {
   type      = string
-  default   = "#"
+  default   = null
   sensitive = true
 }
 
@@ -46,7 +46,7 @@ variable "os_image" {
     os_type         = "Linux"
     image_offer     = "UbuntuServer"
     image_publisher = "Canonical"
-    image_sku       = "16.04-LTS"
+    image_sku       = "18.04-LTS"
   }
   sensitive = false
 }
