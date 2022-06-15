@@ -50,13 +50,13 @@ build {
   # Install Ansible
   provisioner "shell" {
     execute_command = "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
-    script = "scripts/init.sh"
+    script = var.init_script
   }
   
   # Setup OS using Ansible
   provisioner "ansible-local" {
-    playbook_dir = "../../../ansible/roles/"
-    playbook_file = "../../../ansible/roles/setup.yml"
+    playbook_dir = var.ansible_role_path
+    playbook_file = var.ansible_playbook_file
     clean_staging_directory = true
     #extra_argumenrs = ["--extra-vars","\"variable_one=${var.var_one}\""]
   }

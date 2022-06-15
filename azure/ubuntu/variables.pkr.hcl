@@ -44,10 +44,28 @@ variable "os_image" {
   type = map(string)
   default = {
     os_type         = "Linux"
-    image_offer     = "UbuntuServer"
+    image_offer     = "0001-com-ubuntu-server-focal"
     image_publisher = "Canonical"
-    image_sku       = "18.04-LTS"
+    image_sku       = "20_04-lts"
   }
+  sensitive = false
+}
+
+variable "ansible_role_path" {
+  type      = string
+  default   = "/etc/ansible/roles"
+  sensitive = false
+}
+
+variable "ansible_playbook_file" {
+  type      = string
+  default   = ""
+  sensitive = false
+}
+
+variable "init_script" {
+  type      = string
+  default   = "scripts/init.sh"
   sensitive = false
 }
 
